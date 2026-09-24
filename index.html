@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Arabe du Coran</title>
+  <meta name="description" content="Apprendre l'arabe du Coran : vocabulaire coranique, nahw et sarf, en jouant.">
+  <meta name="theme-color" content="#1f8a70">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Arabe Coran">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <button class="back" id="back" aria-label="Retour" hidden>‹</button>
+    <h1 id="title">Arabe du Coran</h1>
+    <div class="chips">
+      <span class="chip" title="Jours d'affilée">🔥 <span id="streak">0</span></span>
+      <span class="chip" title="Étoiles">⭐ <span id="xp">0</span></span>
+    </div>
+  </header>
+
+  <main id="app"></main>
+
+  <nav class="nav">
+    <a href="#/" data-nav="home"><span class="i">🏠</span>Accueil</a>
+    <a href="#/parcours" data-nav="parcours"><span class="i">🗺️</span>Parcours</a>
+    <a href="#/jeux" data-nav="jeux"><span class="i">🎮</span>Jeux</a>
+    <a href="#/mots" data-nav="mots"><span class="i">📖</span>Mots</a>
+    <a href="#/profil" data-nav="profil"><span class="i">⚙️</span>Réglages</a>
+  </nav>
+
+  <script src="data/curriculum.js"></script>
+  <script src="data/vocab.js"></script>
+  <script src="data/racines.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
