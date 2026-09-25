@@ -365,7 +365,7 @@
     const rb = rangeBox(() => lexique());
     const types = [["", "Tous"], ["v", "Verbes"], ["n", "Noms"], ["a", "Adjectifs"], ["p", "Particules"], ["pr", "Pronoms / outils"], ["np", "Noms propres"]];
     app.innerHTML = `<div class="fade-in">
-      <div class="page-head"><h2>Lexique</h2><p>${VOC.length} lemmes classés par fréquence réelle dans le Coran. Ils couvrent 95 % du texte.</p></div>
+      <div class="page-head"><h2>Lexique</h2><p>${VOC.length} mots (lemmes et pronoms) classés par fréquence réelle dans le Coran. Ils couvrent ${Math.floor(VOC[VOC.length - 1].c)} % du texte.</p></div>
       <div class="card flat" style="padding:14px 16px">${rb.html}</div>
       <div class="toolbar"><label class="search">${ic("search")}<input id="q" placeholder="Rechercher : français, arabe, racine" value="${esc(lexState.q)}" autocomplete="off"></label>
         <select id="scope"><option value="range">Plage choisie</option><option value="all">Tout le lexique</option></select></div>
@@ -383,7 +383,7 @@
       $("#count").textContent = `${res.length} résultat${res.length > 1 ? "s" : ""}`;
       $("#list").innerHTML = res.slice(0, lexState.limit).map(w => {
         const box = S.srs[w.id]?.box || 0;
-        return `<a class="row w-row" href="#/mot/${w.id}"><span class="rank">#${w.id}</span>
+        return `<a class="row w-row" href="#/mot/${w.id}"><span class="rank">#${w.k}</span>
           <span class="grow"><span class="t1">${esc(w.fr)}</span><span class="t2">${TYPE[w.t]}${w.r ? " · " + rt(w.r) : ""} · ${w.n} occ.${box >= 3 ? ` · <span class="badge ok">maîtrisé</span>` : ""}</span></span>
           <span class="w">${w.ar}</span></a>`;
       }).join("") || `<div class="row muted">Aucun mot.</div>`;
@@ -421,7 +421,7 @@
       <div class="card word-hero">
         <div class="big">${w.ar}</div><div class="mean">${esc(w.fr)}</div>
         <div class="tags"><span class="badge">${TYPE[w.t]}</span>${w.vf && +w.vf > 1 ? `<span class="badge">forme ${ROMAN[+w.vf]}</span>` : ""}${w.g ? `<span class="badge">${w.g === "f" ? "féminin" : "masculin"}</span>` : ""}
-          ${w.r ? `<span class="badge gold">racine ${rt(w.r)}</span>` : ""}<span class="badge">rang ${w.id}</span><span class="badge">${w.n} occurrences</span>${c ? `<span class="badge ${c.box >= 3 ? "ok" : ""}">révision : niveau ${c.box}</span>` : ""}</div>
+          ${w.r ? `<span class="badge gold">racine ${rt(w.r)}</span>` : ""}<span class="badge">rang ${w.k}</span><span class="badge">${w.n} occurrences</span>${c ? `<span class="badge ${c.box >= 3 ? "ok" : ""}">révision : niveau ${c.box}</span>` : ""}</div>
         ${w.note ? `<p class="small muted" style="margin:12px 0 0">${esc(w.note)}</p>` : ""}
       </div>
       ${forms.length ? `<div class="section-title">${w.t === "v" ? "Formes du verbe" : "Formes"}</div>
@@ -430,7 +430,7 @@
       <div class="card"><div class="context-verse">${vs.map((t, k) => k + 1 === n ? `<mark>${t}</mark>` : t).join(" ")}</div>
         <div class="btn-row" style="margin-top:12px;align-items:center;justify-content:space-between"><span class="small muted" style="flex:0 0 auto">Sourate ${s}, verset ${a}</span>
           <span style="flex:0 0 auto;display:flex;gap:8px">${playBtn(wordUrl(w.loc), "Le mot")}${playBtn(verseUrl(`${s}:${a}`), "Le verset")}</span></div></div>
-      ${fam.length ? `<div class="section-title">Même racine</div><div class="list">${fam.map(x => `<a class="row w-row" href="#/mot/${x.id}"><span class="rank">#${x.id}</span><span class="grow"><span class="t1">${esc(x.fr)}</span><span class="t2">${TYPE[x.t]}</span></span><span class="w">${x.ar}</span></a>`).join("")}</div>` : ""}
+      ${fam.length ? `<div class="section-title">Même racine</div><div class="list">${fam.map(x => `<a class="row w-row" href="#/mot/${x.id}"><span class="rank">#${x.k}</span><span class="grow"><span class="t1">${esc(x.fr)}</span><span class="t2">${TYPE[x.t]}</span></span><span class="w">${x.ar}</span></a>`).join("")}</div>` : ""}
     </div>`;
   }
 
@@ -490,7 +490,7 @@
           <div class="face"><div class="big">${w.ar}</div><span class="badge">${TYPE[w.t]}</span><span class="xs muted" style="margin-top:14px">Touchez pour voir la réponse</span></div>
           <div class="face back"><div class="ar" lang="ar" style="font-size:1.9rem">${w.ar}</div><div class="mean">${esc(w.fr)}</div>
             ${f.length ? `<div class="mini-forms">${f.map(([l, , v]) => `<span>${v}<em>${l.toLowerCase()}</em></span>`).join("")}</div>` : ""}
-            <div class="xs muted">${w.r ? "racine " + rt(w.r) + " · " : ""}rang ${w.id}</div>
+            <div class="xs muted">${w.r ? "racine " + rt(w.r) + " · " : ""}rang ${w.k}</div>
             <div style="margin-top:8px">${playBtn(wordUrl(w.loc), "Écouter")}</div></div></div></div>
         <div class="grade hidden" id="grade"><button class="btn secondary" id="no">À revoir</button><button class="btn" id="yes">Je savais</button></div>
         <button class="btn secondary block" id="flip">Afficher la réponse</button></div>`;

@@ -1,6 +1,6 @@
 /* Service worker : l'app (leçons, lexique) fonctionne hors ligne. Changer VERSION à chaque mise à jour. */
-const VERSION = "v2";
-const CORE = ["./", "index.html", "style.css?v=2", "app.js?v=2", "data/curriculum.js?v=2", "data/vocab.js?v=2", "data/versets.js?v=2",
+const VERSION = "v3";
+const CORE = ["./", "index.html", "style.css?v=3", "app.js?v=3", "data/curriculum.js?v=3", "data/vocab.js?v=3", "data/versets.js?v=3",
   "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png"];
 
 self.addEventListener("install", e => {
