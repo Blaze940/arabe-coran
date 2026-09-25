@@ -1,4 +1,4 @@
-# Arabe du Coran
+# Muzzlimin
 
 Application web installable (PWA) pour apprendre l'arabe **avec le seul vocabulaire du Coran**, et la grammaire (nahw) et la morphologie (sarf) utiles pour le comprendre.
 

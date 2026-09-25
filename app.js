@@ -1,4 +1,4 @@
-/* Arabe du Coran — application (JavaScript sans dépendance). */
+/* Muzzlimin — application (JavaScript sans dépendance). */
 (() => {
   "use strict";
 
@@ -192,7 +192,7 @@
 
   // ————————————————— Accueil —————————————————
   function home() {
-    chrome("Arabe du Coran");
+    chrome("Muzzlimin");
     const nl = nextLesson();
     const nDone = LESSONS.filter(l => done(l.id)).length;
     const m = mastered();
